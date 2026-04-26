@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tadeo Sorrentino | Systems Architect</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body class="boot-pending">
+    <button id="glitch-toggle" class="glitch-toggle" type="button" aria-pressed="true">GLITCH: ON</button>
+    <div id="boot-screen" class="boot-screen">
+        <button id="boot-button" class="boot-button" type="button">INITIATE BOOT SEQUENCE</button>
+    </div>
+    
+    <div class="container">
+        <header class="terminal-header reveal-on-load">
+            <div class="system-info">
+                <span class="prompt">tade@linux-station:~$</span> <span class="command">neofetch</span>
+                <div class="profile-data">
+                    <pre class="ascii-art">
+<span class="key">NAME:</span>      <span class="value header-focus">Tadeo Sorrentino</span>
+<span class="key">ROLE:</span>      <span class="value header-focus">Information Systems Engineering Student @ UTN FRBA</span>
+<span class="key">GPA:</span>       <span class="value header-focus">3.7 / 4.0 (8.94/10.0)</span>
+<span class="key">LANGS:</span>     <span class="value">English C2 (Proficient) / Spanish (Native)</span>
+<span class="key">INTERESTS:</span> <span class="value">Low-Level, Reverse Engineering, Linux, Microservices, Java, Spring Boot</span>
+                    </pre>
+                </div>
+            </div>
+        </header>
+
+        <section id="about" class="reveal-on-load">
+            <h2>> whoami</h2>
+            <p>Self-taught programmer since age 11. I bridge the gap between low-level technical mastery and modern scalable architectures. Focused on high-performance systems and clean code.</p>
+        </section>
+
+        <section id="projects" class="reveal-on-load">
+            <h2>> ls ./projects --sort year</h2>
+
+            <div class="year-group reveal-on-scroll">
+                <h3 class="year-label">[ 2025 ]</h3>
+                <div class="project-grid">
+                    <div class="project-card reveal-on-scroll">
+                        <h4>Metamapa</h4>
+                        <p>Collaborative Mapping System. Microservices with Java, Spring Boot, Hibernate and Docker.</p>
+                        <a href="https://github.com/tsorren/Metamapa-TP-DDSI" class="repo-link">--view-source</a>
+                    </div>
+                    <div class="project-card reveal-on-scroll">
+                        <h4>Tienda Sol</h4>
+                        <p>Full-stack MERN E-commerce with professional CI/CD workflows.</p>
+                        <a href="https://github.com/tsorren/Tienda-Sol-TP-DDSO" class="repo-link">--view-source</a>
+                    </div>
+                    <div class="project-card reveal-on-scroll">
+                        <h4>Distributed OS Sim</h4>
+                        <p>Golang. Simulation of Kernel, CPU, Paging (MMU/TLB), RAM and SWAP.</p>
+                        <a href="https://github.com/tsorren/OS-Simulation-TP-SSOO" class="repo-link">--view-source</a>
+                    </div>
+                    <div class="project-card reveal-on-scroll">
+                        <h4>Advanced Paradigms</h4>
+                        <p>Metaprogramming Framework (Ruby) & Object-Functional Engine (Scala).</p>
+                        <a href="https://github.com/tsorren/Paradigmas-Avanzados-TP-TADP" class="repo-link">--view-source</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="year-group reveal-on-scroll">
+                <h3 class="year-label">[ 2024 ]</h3>
+                <div class="project-grid">
+                    <div class="project-card reveal-on-scroll">
+                        <h4>Tetris Trainer</h4>
+                        <p>OOP Development of competitive-grade engine with SRS logic and 7-bag randomization.</p>
+                        <a href="https://github.com/tsorren/Tetris-Trainer-TP-PDP" class="repo-link">--view-source</a>
+                    </div>
+                    <div class="project-card reveal-on-scroll">
+                        <h4>Football Management</h4>
+                        <p>C++. Algorithmic optimization for fair-match balancing using statistics.</p>
+                        <a href="https://github.com/tsorren/Sistema-de-Gestion-Equipos-de-Futbol" class="repo-link">--view-source</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="year-group reveal-on-scroll">
+                <h3 class="year-label">[ 2022 ]</h3>
+                <div class="project-grid">
+                    <div class="project-card highlight reveal-on-scroll">
+                        <h4>Reverse Engineering and Low-Level Automation</h4>
+                        <p>C++/WinAPI/Direct3D 9. Reverse engineering and memory analysis using IDA Pro & Ghidra.</p>
+                        <a href="https://github.com/tsorren/Reverse-Engineering-Automation" class="repo-link">--view-source</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="reveal-on-scroll">
+            <p>> contact --mail <a href="mailto:tadeosorrentino@gmail.com">tadeosorrentino@gmail.com</a></p>
+            <p>> find --me <a href="https://github.com/tsorren">github.com/tsorren</a></p>
+            <p>> linkedin <a href="https://linkedin.com/in/tadeo-sorrentino">/in/tadeo-sorrentino</a></p>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

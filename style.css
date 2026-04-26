@@ -1,0 +1,305 @@
+:root {
+    --bg-color: #0a0a0a;
+    --text-color: #d1d1d1;
+    --accent-color: #bb86fc;
+    --secondary-color: #03dac6;
+    --grid-color: rgba(187, 134, 252, 0.03);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    background-image:
+        linear-gradient(var(--grid-color) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+    background-size: 30px 30px;
+    color: var(--text-color);
+    font-family: 'JetBrains Mono', monospace;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    text-shadow: 0 0 0.3px rgba(255, 255, 255, 0.2);
+    position: relative;
+}
+
+body.boot-pending {
+    overflow: hidden;
+}
+
+body.boot-pending .container,
+body.boot-pending .glitch-toggle {
+    visibility: hidden;
+}
+
+.boot-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 3000;
+    display: grid;
+    place-items: center;
+    padding: 20px;
+    background: radial-gradient(circle at center, rgba(18, 18, 18, 0.7), rgba(7, 7, 7, 0.97));
+    transition: opacity 420ms ease;
+}
+
+.boot-screen.is-hiding {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.boot-button {
+    background: #111;
+    border: 1px solid var(--accent-color);
+    color: var(--text-color);
+    min-width: min(90vw, 460px);
+    padding: 28px 32px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: clamp(0.92rem, 2vw, 1.05rem);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.7);
+    transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease, background-color 220ms ease;
+}
+
+.boot-button:hover,
+.boot-button:focus-visible {
+    border-color: var(--accent-color);
+    background: #161616;
+    box-shadow: 0 0 24px rgba(187, 134, 252, 0.18);
+    transform: scale(1.02);
+}
+
+body.crt-glitch .container {
+    transform: translateX(1.5px) skewX(-0.35deg);
+}
+
+body.crt-glitch {
+    text-shadow: 1px 0 rgba(255, 0, 110, 0.45), -1px 0 rgba(0, 255, 255, 0.45), 0 0 2px rgba(255, 255, 255, 0.25);
+}
+
+.container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 20px;
+    position: relative;
+    animation: warmup 700ms ease-out both;
+}
+
+.glitch-toggle {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    z-index: 2100;
+    border: 1px solid rgba(3, 218, 198, 0.65);
+    background: rgba(10, 10, 10, 0.9);
+    color: var(--secondary-color);
+    padding: 10px 14px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    border-radius: 4px;
+    box-shadow: 0 0 15px rgba(3, 218, 198, 0.2);
+    transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.glitch-toggle:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 0 20px rgba(3, 218, 198, 0.34);
+}
+
+.glitch-toggle:active {
+    transform: translateY(0);
+}
+
+.glitch-toggle.is-off {
+    color: #9b9b9b;
+    border-color: rgba(180, 180, 180, 0.5);
+    box-shadow: none;
+}
+
+.terminal-header {
+    background: rgba(20, 20, 20, 0.8);
+    padding: 40px;
+    border-radius: 4px;
+    border: 1px solid #222;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+    margin-bottom: 50px;
+}
+
+.prompt {
+    color: var(--accent-color);
+    font-weight: bold;
+}
+
+.command {
+    color: #fff;
+}
+
+.profile-data pre {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    margin-top: 25px;
+    white-space: pre-wrap;
+}
+
+.key {
+    color: var(--secondary-color);
+    font-weight: bold;
+}
+
+.header-focus {
+    color: #fff;
+}
+
+h2 {
+    color: var(--accent-color);
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 1);
+}
+
+.year-label {
+    color: #aaa;
+    font-size: 1.5rem;
+    margin: 40px 0 20px;
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+
+.project-card {
+    background: #111;
+    border: 1px solid #222;
+    padding: 25px;
+    min-height: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    position: relative;
+}
+
+.project-card:hover {
+    border-color: var(--accent-color);
+    background: #161616;
+    transform: scale(1.02);
+    box-shadow: 0 0 20px rgba(187, 134, 252, 0.15);
+}
+
+.project-card.highlight {
+    border-left: 4px solid var(--accent-color);
+}
+
+.project-card h4 {
+    margin: 0 0 15px;
+    color: var(--secondary-color);
+    font-size: 1.1rem;
+}
+
+.project-card p {
+    font-size: 0.9rem;
+    color: #aaa;
+    margin-bottom: 20px;
+}
+
+.repo-link {
+    color: var(--accent-color);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: bold;
+}
+
+.is-animated {
+    opacity: 0;
+    transform: translateY(18px);
+    filter: blur(2px);
+}
+
+.is-animated.show {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+    transition: opacity 560ms ease, transform 560ms cubic-bezier(0.2, 0.75, 0.15, 1), filter 560ms ease;
+    transition-delay: var(--reveal-delay, 0ms);
+}
+
+.project-card.is-animated {
+    transform: translateY(22px) scale(0.98);
+}
+
+.project-card.is-animated.show {
+    transform: translateY(0) scale(1);
+}
+
+footer {
+    margin-top: 80px;
+    padding: 40px 0;
+    border-top: 1px solid #222;
+    font-size: 1.17rem;
+}
+
+footer a {
+    color: var(--secondary-color);
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+@keyframes warmup {
+    0% {
+        opacity: 0;
+        filter: blur(6px) saturate(0.8);
+    }
+    100% {
+        opacity: 1;
+        filter: blur(0) saturate(1);
+    }
+}
+
+@media (max-width: 768px) {
+    .project-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-data pre {
+        font-size: 0.9rem;
+    }
+
+    .container {
+        padding: 10px;
+    }
+
+    .glitch-toggle {
+        top: 10px;
+        right: 10px;
+        font-size: 0.72rem;
+        padding: 8px 10px;
+    }
+
+    .boot-button {
+        padding: 22px 20px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .boot-screen,
+    .container,
+    .is-animated,
+    .is-animated.show {
+        animation: none !important;
+        transition: none !important;
+        transform: none !important;
+        filter: none !important;
+        opacity: 1 !important;
+    }
+}
