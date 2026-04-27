@@ -210,6 +210,65 @@ h2 {
     margin-bottom: 20px;
 }
 
+/* ... (debajo de los estilos de .project-card) ... */
+
+.experience-container {
+    margin-bottom: 50px;
+}
+
+.experience-card {
+    background: rgba(20, 20, 20, 0.6);
+    border: 1px solid #222;
+    padding: 30px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.experience-card:hover {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 20px rgba(187, 134, 252, 0.1);
+}
+
+.experience-card.highlight {
+    border-left: 4px solid var(--accent-color);
+}
+
+.exp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.exp-header h3 {
+    margin: 0;
+    color: var(--secondary-color);
+    font-size: 1.3rem;
+}
+
+.exp-date {
+    color: var(--accent-color);
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.experience-card p {
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 15px;
+    color: #bbb;
+}
+
+/* Ajuste responsive para la fecha */
+@media (max-width: 600px) {
+    .exp-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
 .repo-link {
     color: var(--accent-color);
     text-decoration: none;
