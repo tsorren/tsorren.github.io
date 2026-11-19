@@ -23,7 +23,7 @@ export type Capitulo = {
   pos: { escritorio: Pos; movil: Pos };
   pasos: Paso[];
   mas: Texto[];
-  repos: { nombre: string; url: string }[];
+  enlaces: { nombre: Texto; url: string }[]; // repos del maestro y certificados
   stack: string[];
   fuente: string;
 };
@@ -71,7 +71,7 @@ export const relato = {
         { id: 'empezar-1', rotulo: t('Desde 2016', 'Since 2016'), frase: t('Programo desde 2016.', 'I have been programming since 2016.'), tipo: 'hecho', fuente: 'PROFESSIONAL SUMMARY' },
       ],
       mas: [],
-      repos: [],
+      enlaces: [],
       stack: [],
       fuente: 'PROFESSIONAL SUMMARY',
     },
@@ -91,7 +91,7 @@ export const relato = {
         t('Diseñé la topología de red local y los accesos remotos seguros al sistema contable (BTB Soft): de una conexión directa, un usuario por vez, a uso multiusuario en paralelo.', 'Designed the local network topology and secure remote access to the accounting system (BTB Soft): from direct access, one user at a time, to concurrent multi-user access.'),
         t('Escribí los procedimientos de infraestructura de IT y de mitigación de incidentes, una solución estandarizada para los problemas de la red local.', 'Wrote IT infrastructure and incident-mitigation procedures, a standardized solution for local network issues.'),
       ],
-      repos: [],
+      enlaces: [],
       stack: [],
       fuente: 'WORK EXPERIENCE > Bosque',
     },
@@ -117,13 +117,13 @@ export const relato = {
         t('Técnicas Avanzadas de Programación: Design by Contract en Ruby con metaprogramación y un motor de torneos inmutable en Scala.', 'Advanced Programming Techniques: Design by Contract in Ruby with metaprogramming and an immutable tournament engine in Scala.'),
         t('Tienda Sol: e-commerce MERN con validación de peticiones, CORS y secretos por variables de entorno; pruebas con Jest y Cypress.', 'Tienda Sol: MERN e-commerce with request validation, CORS and secrets via environment variables; tested with Jest and Cypress.'),
       ],
-      repos: [
-        { nombre: 'Distributed OS Simulation', url: gh('OS-Simulation-TP-SSOO') },
-        { nombre: 'Metamapa', url: gh('Metamapa-TP-DDSI') },
-        { nombre: 'Sofa Factory', url: gh('Fabrica-de-Sillones-TP-BBDD') },
-        { nombre: 'Advanced Programming Techniques', url: gh('Paradigmas-Avanzados-TP-TADP') },
-        { nombre: 'Tienda Sol', url: gh('Tienda-Sol-TP-DDSO') },
-        { nombre: 'EF SET 74/100 (C2)', url: 'https://cert.efset.org/en/Fj7hMp' },
+      enlaces: [
+        { nombre: t('Simulación de Sistema Operativo Distribuido', 'Distributed OS Simulation'), url: gh('OS-Simulation-TP-SSOO') },
+        { nombre: t('Metamapa', 'Metamapa'), url: gh('Metamapa-TP-DDSI') },
+        { nombre: t('Fábrica de Sillones', 'Sofa Factory'), url: gh('Fabrica-de-Sillones-TP-BBDD') },
+        { nombre: t('Técnicas Avanzadas de Programación', 'Advanced Programming Techniques'), url: gh('Paradigmas-Avanzados-TP-TADP') },
+        { nombre: t('Tienda Sol', 'Tienda Sol'), url: gh('Tienda-Sol-TP-DDSO') },
+        { nombre: t('EF SET 74/100 (C2)', 'EF SET 74/100 (C2)'), url: 'https://cert.efset.org/en/Fj7hMp' },
       ],
       stack: ['Golang', 'Java', 'Spring Boot', 'Spring Security', 'SQL Server', 'T-SQL', 'Ruby', 'Scala', 'React', 'Node.js', 'MongoDB'],
       fuente: 'EDUCATION, LANGUAGES, PROJECTS (2025)',
@@ -146,7 +146,7 @@ export const relato = {
         t('Pruebas unitarias, de integración (Testcontainers), de contrato (OpenAPI), de humo y de mutación (Pitest).', 'Unit, integration (Testcontainers), contract (OpenAPI), smoke and mutation (Pitest) tests.'),
         t('CI/CD en GitHub Actions con análisis estático en SonarQube; n8n por webhook para difundir insignias y el ranking mensual.', 'CI/CD in GitHub Actions with SonarQube static analysis; n8n via webhooks to broadcast badges and the monthly ranking.'),
       ],
-      repos: [{ nombre: 'DonaTrack', url: gh('DonaTrack-TP-DDS') }],
+      enlaces: [{ nombre: t('DonaTrack', 'DonaTrack'), url: gh('DonaTrack-TP-DDS') }],
       stack: ['Java 21', 'Spring Boot 4', 'Spring Cloud Gateway', 'RabbitMQ', 'PostgreSQL', 'MongoDB', 'Keycloak', 'Redis', 'Testcontainers', 'ArchUnit', 'Pitest', 'GitHub Actions', 'n8n'],
       fuente: 'PROJECTS > DonaTrack',
     },
@@ -164,7 +164,7 @@ export const relato = {
         { id: 'produccion-5', rotulo: t('>65 %', '>65%'), frase: t('Gobernanza de agentes de IA: más de un 65 % menos de tokens.', 'AI agent governance: over 65% fewer tokens.'), tipo: 'hecho', fuente: 'WORK EXPERIENCE > WirData 6' },
       ],
       mas: [
-        t('Reestructuración bajo DDD del microservicio de virtualización sobre XCP-ng, dentro del panel de servicios IaaS y SaaS (TypeScript, Kubernetes, Galera).', 'Restructuring of the XCP-ng virtualization microservice around DDD, part of the IaaS and SaaS platform (TypeScript, Kubernetes, Galera).'),
+        t('Participé en la reestructuración bajo DDD del microservicio de virtualización sobre XCP-ng, dentro del panel de servicios IaaS y SaaS (TypeScript, Kubernetes, Galera).', 'Contributed to restructuring the XCP-ng virtualization microservice around DDD, part of the IaaS and SaaS platform (TypeScript, Kubernetes, Galera).'),
         t('Estrategia de asignación transaccional de recursos con RabbitMQ (consistencia eventual).', 'Transactional resource allocation strategy using RabbitMQ (eventual consistency).'),
         t('El flujo comercial, especificado en Odoo CRM con dos tableros Kanban y revisado con una auditoría UX por rol (36 hallazgos).', 'The sales workflow, specified in Odoo CRM as two Kanban boards and reviewed through a role-based UX audit (36 findings).'),
         t('El módulo de Odoo: único mantenedor, CI en GitHub Actions, pruebas unitarias y E2E con Playwright, 98 % de cobertura; desplegado con Docker y Portainer, con un importador de 12 meses de datos; capacité a los equipos de Ventas y Leads.', 'The Odoo module: sole maintainer, CI in GitHub Actions, unit and E2E tests with Playwright, 98% coverage; deployed with Docker and Portainer with an importer for 12 months of data; trained the Sales and Leads teams.'),
@@ -173,7 +173,7 @@ export const relato = {
         t('Operación NOC con Zabbix, NetBox, pfSense y Xen Orchestra; incidentes en gateways satelitales con respuesta en 15–30 min y un incidente crítico de PSU resuelto en menos de medio día.', 'NOC operations with Zabbix, NetBox, pfSense and Xen Orchestra; satellite gateway incidents with 15–30 min response time and a critical PSU incident resolved in under half a day.'),
         t('El método con agentes: spec → plan → tareas; un auditor de contexto limpio y sin escritura antes de cada PR; merge humano; router de contexto, gates por rama y PR, workflows, skills y hooks deterministas.', 'The method with agents: spec → plan → tasks; a clean-context, read-only auditor before every PR; human merge; context router, branch and PR gates, deterministic workflows, skills and hooks.'),
       ],
-      repos: [],
+      enlaces: [],
       stack: ['TypeScript', 'Kubernetes', 'Galera', 'RabbitMQ', 'Keycloak', 'GitHub Actions', 'Testcontainers', 'Odoo 19', 'Python', 'Playwright', 'Docker', 'LiteLLM', 'vLLM'],
       fuente: 'WORK EXPERIENCE > WirData; método aprobado por el autor (R1, columna 3)',
     },

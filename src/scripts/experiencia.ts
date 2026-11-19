@@ -194,6 +194,14 @@ if (ll.revelar) {
 mundo.classList.add('sin-transicion');
 
 // ---------- Avance (D3): el scroll nativo decide el paso activo ----------
+// R3, columna 1: con un ancla válida, se arranca en ese paso sin recorrer las paradas intermedias.
+history.scrollRestoration = 'manual'; // al recargar manda el ancla (D7), no la posición vieja del navegador
+if (ll.destino !== 'hoy') {
+  const el = document.getElementById(ll.destino)!;
+  el.scrollIntoView({ behavior: 'instant' });
+  const p = el.closest<HTMLElement>('[data-i]') ?? el.querySelector<HTMLElement>('[data-i]');
+  if (p) mostrar(Number(p.dataset.i));
+}
 const io = new IntersectionObserver(
   (entradas) => {
     for (const en of entradas) if (en.isIntersecting) mostrar(Number((en.target as HTMLElement).dataset.i));

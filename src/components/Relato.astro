@@ -91,7 +91,7 @@ const linea = (a: { x: number; y: number }, b: { x: number; y: number }) => ({ x
     <header class="barra">
       <a class="marca" href="#hoy">{relato.nombre}</a>
       <span class="sep"></span>
-      <a class="btn" id="idioma" href={`/${otro}/`} hreflang={otro} lang={otro} aria-label={ui.otroIdiomaNombre[L]}>{ui.otroIdioma[L]}</a>
+      <a class="btn" id="idioma" href={`/${otro}/`} hreflang={otro} lang={otro} aria-label={`${ui.otroIdioma[L]} · ${ui.otroIdiomaNombre[L]}`}>{ui.otroIdioma[L]}</a>
       <button class="btn" id="sonido" type="button" hidden aria-label={ui.sonido[L]} data-off={ui.sonidoEstado.off[L]} data-sistema={ui.sonidoEstado.sistema[L]} data-ambiente={ui.sonidoEstado.ambiente[L]}>
         <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M2 6h3l4-3v10L5 10H2z" fill="currentColor" /><path d="M11 5.5a3.5 3.5 0 0 1 0 5" stroke="currentColor" fill="none" stroke-width="1.4" /></svg>
         <span>{ui.sonidoEstado.off[L]}</span>
@@ -215,7 +215,7 @@ const linea = (a: { x: number; y: number }, b: { x: number; y: number }) => ({ x
                     </span>
                     <span class="frase">{p.frase[L]}</span>
                   </p>
-                  {n === c.pasos.length - 1 && (c.mas.length > 0 || c.repos.length > 0) && (
+                  {n === c.pasos.length - 1 && (c.mas.length > 0 || c.enlaces.length > 0) && (
                     <details class="mas">
                       <summary class="btn">
                         {ui.mas[L]} <span aria-hidden="true">▾</span>
@@ -231,13 +231,13 @@ const linea = (a: { x: number; y: number }, b: { x: number; y: number }) => ({ x
                             <b>{ui.stack[L]}:</b> {c.stack.join(', ')}.
                           </p>
                         )}
-                        {c.repos.length > 0 && (
+                        {c.enlaces.length > 0 && (
                           <p>
                             <b>{ui.repos[L]}:</b>{' '}
-                            {c.repos.map((r, k) => (
+                            {c.enlaces.map((r, k) => (
                               <>
                                 {k > 0 && ' · '}
-                                <a href={r.url}>{r.nombre}</a>
+                                <a href={r.url}>{r.nombre[L]}</a>
                               </>
                             ))}
                           </p>

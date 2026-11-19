@@ -8,12 +8,10 @@ on:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 concurrency:
   group: pages-${{ github.ref }}
-  cancel-in-progress: true
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
   build:
@@ -40,10 +38,6 @@ jobs:
       - name: Verificar dist
         run: npm run verificar
 
-      - name: Configurar Pages
-        if: github.event_name == 'push'
-        uses: actions/configure-pages@v5
-
       - name: Subir artefacto
         if: github.event_name == 'push'
         uses: actions/upload-pages-artifact@v3
@@ -52,6 +46,9 @@ jobs:
 
   deploy:
     if: github.event_name == 'push'
+    permissions:
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
