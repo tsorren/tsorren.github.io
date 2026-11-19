@@ -1,0 +1,39 @@
+---
+// Raíz: elige el idioma (R2) y redirige. Sin JS, ofrece los dos enlaces y va a /en/.
+import { ui } from '../data/relato.ts';
+const url = (p: string) => new URL(p, Astro.site).href;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tadeo Sorrentino</title>
+    <meta name="description" content={ui.descripcion.en} />
+    <link rel="alternate" hreflang="es" href={url('/es/')} />
+    <link rel="alternate" hreflang="en" href={url('/en/')} />
+    <link rel="alternate" hreflang="x-default" href={url('/')} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={ui.titulo.en} />
+    <meta property="og:description" content={ui.descripcion.en} />
+    <meta property="og:url" content={url('/')} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <noscript><meta http-equiv="refresh" content="0; url=/en/" /></noscript>
+    <script>
+      import { elegirIdioma } from '../lib/logica.ts';
+      let pref: string | null = null;
+      try {
+        pref = localStorage.getItem('pref.idioma');
+      } catch {}
+      location.replace(`/${elegirIdioma(location.pathname, pref, navigator.languages)}/${location.hash}`);
+    </script>
+    <style is:global>
+      body { margin: 0; padding: 32px 16px; background: #0f0e1a; color: #f4ede4; font: 16px/1.6 ui-monospace, Consolas, monospace; }
+      a { color: #f2b8c6; }
+    </style>
+  </head>
+  <body>
+    <p><a href="/es/" lang="es" hreflang="es">Español</a> · <a href="/en/" hreflang="en">English</a></p>
+  </body>
+</html>
