@@ -179,7 +179,10 @@ function mostrar(i: number) {
   }
 
   // D7: la posición vive en el ancla, sin llenar el historial.
-  history.replaceState(null, '', i === 0 ? location.pathname : `#${p.id}`);
+  // Un ancla que ya cae en esta parada (p. ej. #contacto dentro del cierre) se respeta.
+  const previa = location.hash && document.getElementById(location.hash.slice(1));
+  const suParada = previa && (previa.closest<HTMLElement>('[data-i]') ?? previa.querySelector<HTMLElement>('[data-i]'));
+  if (!suParada || Number(suParada.dataset.i) !== i) history.replaceState(null, '', i === 0 ? location.pathname : `#${p.id}`);
   enlaceIdioma.href = enlaceOtroIdioma(L, location.hash);
 }
 
