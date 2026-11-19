@@ -6,6 +6,7 @@ import {
   enlaceOtroIdioma,
   estrellas,
   glifo,
+  OSD_MS,
   leerPaleta,
   llegada,
   paradas,
@@ -75,7 +76,7 @@ function pintarOsd(g: Glifo) {
 function flash(g: Glifo) {
   pintarOsd(g);
   clearTimeout(osdT);
-  if (g !== 'rec') osdT = window.setTimeout(() => pintarOsd('rec'), 1600);
+  if (g !== 'rec') osdT = window.setTimeout(() => pintarOsd('rec'), OSD_MS);
 }
 
 // ---------- Sonido (R4) ----------

@@ -33,7 +33,7 @@ export type Relato = {
   titular: Texto;
   hoy: { fecha: Texto; frase: Texto; cifras: { valor: Texto; rotulo: Texto; fuente: string }[] };
   capitulos: Capitulo[];
-  aporte: { nombre: Texto; items: string[]; fuente: string }[];
+  aporte: { nombre: Texto; items: Texto[]; fuente: string }[];
   cierre: { titulo: Texto; lineas: Texto[]; meta: Texto };
   contacto: { email: string; github: string; linkedin: string };
   ficha: { texto: Texto; url?: string; fuente: string }[];
@@ -42,6 +42,7 @@ export type Relato = {
 
 const t = (es: string, en: string): Texto => ({ es, en });
 const gh = (repo: string) => `https://github.com/tsorren/${repo}`;
+const igual = (...xs: string[]) => xs.map((x) => t(x, x));
 
 export const relato = {
   nombre: 'Tadeo Sorrentino',
@@ -122,6 +123,7 @@ export const relato = {
         { nombre: 'Sofa Factory', url: gh('Fabrica-de-Sillones-TP-BBDD') },
         { nombre: 'Advanced Programming Techniques', url: gh('Paradigmas-Avanzados-TP-TADP') },
         { nombre: 'Tienda Sol', url: gh('Tienda-Sol-TP-DDSO') },
+        { nombre: 'EF SET 74/100 (C2)', url: 'https://cert.efset.org/en/Fj7hMp' },
       ],
       stack: ['Golang', 'Java', 'Spring Boot', 'Spring Security', 'SQL Server', 'T-SQL', 'Ruby', 'Scala', 'React', 'Node.js', 'MongoDB'],
       fuente: 'EDUCATION, LANGUAGES, PROJECTS (2025)',
@@ -178,10 +180,10 @@ export const relato = {
   ],
 
   aporte: [
-    { nombre: t('Backend', 'Backend'), items: ['Java', 'Spring Boot', 'TypeScript', 'DDD'], fuente: 'TECHNICAL SKILLS' },
-    { nombre: t('Sistemas distribuidos', 'Distributed systems'), items: ['RabbitMQ', 'Kubernetes', 'Microservices'], fuente: 'TECHNICAL SKILLS' },
-    { nombre: t('Agentes de IA', 'AI agents'), items: ['Spec-Driven Development', 'Context Engineering', 'MCP'], fuente: 'TECHNICAL SKILLS' },
-    { nombre: t('Calidad y entrega', 'Quality and delivery'), items: ['Testcontainers', 'Playwright', 'GitHub Actions'], fuente: 'TECHNICAL SKILLS' },
+    { nombre: t('Backend', 'Backend'), items: igual('Java', 'Spring Boot', 'TypeScript', 'DDD'), fuente: 'TECHNICAL SKILLS' },
+    { nombre: t('Sistemas distribuidos', 'Distributed systems'), items: [...igual('RabbitMQ', 'Kubernetes'), t('Microservicios', 'Microservices')], fuente: 'TECHNICAL SKILLS' },
+    { nombre: t('Agentes de IA', 'AI agents'), items: igual('Spec-Driven Development', 'Context Engineering', 'MCP'), fuente: 'TECHNICAL SKILLS' },
+    { nombre: t('Calidad y entrega', 'Quality and delivery'), items: igual('Testcontainers', 'Playwright', 'GitHub Actions'), fuente: 'TECHNICAL SKILLS' },
   ],
 
   cierre: {
@@ -230,7 +232,7 @@ export const ui = {
   comoLlegue: t('¿Cómo llegué acá?', 'How did I get here?'),
   ayudaAvance: t('Scroll o deslizá para avanzar', 'Scroll or swipe to move on'),
   mas: t('Más', 'More'),
-  repos: t('Repositorios', 'Repositories'),
+  repos: t('Enlaces', 'Links'),
   stack: t('Stack', 'Stack'),
   cielo: t('El cielo completo', 'The whole sky'),
   cieloAyuda: t('Elegí un capítulo para volver a él.', 'Pick a chapter to go back to it.'),

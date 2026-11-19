@@ -295,7 +295,7 @@ const linea = (a: { x: number; y: number }, b: { x: number; y: number }) => ({ x
               relato.aporte.map((g, k) => (
                 <li class="grupo" style={`--gx:${centros[k].x}%;--gy:${centros[k].y + 12}%`}>
                   <b>{g.nombre[L]}</b>
-                  <span>{g.items.join(' · ')}</span>
+                  <span>{g.items.map((x) => x[L]).join(' · ')}</span>
                 </li>
               ))
             }

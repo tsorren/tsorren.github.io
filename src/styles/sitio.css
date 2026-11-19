@@ -83,7 +83,7 @@ a { color: var(--rosa); }
 .barra .btn { min-height: 36px; padding: 0 10px; }
 .barra .btn::after { content: ''; position: absolute; inset: -4px 0; } /* objetivo táctil de 44 px */
 .barra .btn { position: relative; }
-.marca { font-family: var(--f-marca); font-size: 18px; color: var(--rosa); text-decoration: none; white-space: nowrap; }
+.marca { display: inline-flex; align-items: center; min-height: 44px; font-family: var(--f-marca); font-size: 18px; color: var(--rosa); text-decoration: none; white-space: nowrap; }
 .sep { flex: 1; }
 #sonido[aria-pressed='true'] { border-color: var(--rosa); color: var(--rosa); }
 
@@ -111,6 +111,8 @@ a { color: var(--rosa); }
   display: flex;
   align-items: center;
   height: 100%;
+  min-width: 44px;
+  justify-content: center;
   padding: 0 6px;
   background: var(--noche);
   font-family: var(--f-osd);
@@ -256,6 +258,7 @@ main { position: relative; z-index: 1; }
 .nota li::before { content: '– '; }
 .nota p { margin-top: 8px; }
 .nota a { color: var(--acento); font-weight: 700; }
+.nota a:focus-visible { outline-color: var(--acento); }
 
 /* «Hoy» */
 .hoy { justify-content: center; }

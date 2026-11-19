@@ -39,7 +39,7 @@ test('RF-06: el cielo y el cierre encienden todo', () => {
     assert.ok(e.lineas.every(Boolean));
   }
 });
-test('cámara: zoom al capítulo con el foco en el tercio superior; cielo sin zoom', () => {
+test('cámara: zoom al capítulo con el foco arriba del centro (el subtítulo va abajo); cielo sin zoom', () => {
   const centros = [{ x: 10, y: 70 }, { x: 50, y: 50 }, { x: 80, y: 30 }];
   assert.deepEqual(encuadre(ps[4], centros, false), { cx: 50, cy: 50, s: 2.6, fy: 0.4 });
   assert.deepEqual(encuadre(ps[8], centros, true), { cx: 50, cy: 50, s: 1, fy: 0.5 });

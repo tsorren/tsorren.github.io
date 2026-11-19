@@ -39,11 +39,12 @@ export function llegada(ancla: string, ids: readonly string[], reducido: boolean
 
 // ---------- R5. OSD ----------
 export type Glifo = 'rec' | 'play' | 'rew' | 'ff' | 'pause';
+export const OSD_MS = 1600; // un aviso vuelve a REC a los 1,6 s
 
 export function glifo(prev: number, i: number, ps: readonly Parada[]): Glifo {
   const d = i - prev;
   if (d === 0) return 'rec';
-  if (ps[prev]?.tipo === 'hoy' && ps[i]?.tipo !== 'cielo' && ps[i]?.tipo !== 'cierre') return 'rew'; // vuelve a 2016
+  if (ps[prev]?.tipo === 'hoy' && capituloDe(ps[i]) === 0) return 'rew'; // «¿Cómo llegué acá?»: vuelve a 2016
   if (d < 0) return 'rew';
   return d === 1 ? 'play' : 'ff';
 }
